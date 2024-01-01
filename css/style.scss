@@ -123,6 +123,10 @@ input, button {
 
 #songs {
     list-style: none;
+    position: relative;
+    z-index: 3;
+    mix-blend-mode: screen;
+
 }
 
 .song {
@@ -131,10 +135,10 @@ input, button {
     padding: 15px;
     margin: 10px 0;
     background: var(--gradient);
-    mix-blend-mode: screen;
     width: 50%;
     margin: 0 auto;
     margin-top: 0.5rem;
+    
 }
 
 .song .title {
@@ -314,6 +318,7 @@ input, button {
 
 .bodyBackgroundWrapper {
     position: absolute;
+    overflow: hidden;
     top: 0;
     left: 0;
     z-index: -3;
@@ -321,32 +326,69 @@ input, button {
     height: 100%;
 }
 
-.bodyBackgroundWrapper img :nth-child( 1 ) {
-    animation-delay: 0ms;
-    left: 20%;
+.bodyBackgroundWrapper > img:nth-of-type(1) {
+    animation-delay: calc( 800ms * 1 );
+    rotate: random( 240 ) + 200deg;
+    left: random( 100 ) + 0%;
 }
-.bodyBackgroundWrapper img :nth-child( 2 ) {
-    animation-delay: 0ms;
-    left: 40%;
+.bodyBackgroundWrapper > img:nth-of-type(2) {
+    animation-delay: calc( 800ms * 2 );
+    rotate: -240deg;
+    left: random( 100 ) + 0%;
 }
-.bodyBackgroundWrapper img :nth-child( 3 ) {
-    animation-delay: 0ms;
-    left: 60%;
+.bodyBackgroundWrapper > img:nth-of-type(3) {
+    animation-delay: calc( 800ms * 3 );
+    rotate: 120deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(4) {
+    animation-delay: calc( 800ms * 4 );
+    rotate: 540deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(5) {
+    animation-delay: calc( 800ms * 5 );
+    rotate: -240deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(6) {
+    animation-delay: calc( 800ms * 6 );
+    rotate: 120deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(7) {
+    animation-delay: calc( 800ms * 7 );
+    rotate: 540deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(8) {
+    animation-delay: calc( 800ms * 8 );
+    rotate: -240deg;
+    left: random( 100 ) + 0%;
+}
+.bodyBackgroundWrapper > img:nth-of-type(9) {
+    animation-delay: calc( 800ms * 9 );
+    rotate: 120deg;
+    left: random( 100 ) + 0%;
 }
 
 .bodyBackgroundWrapper img {
     position: absolute;
-    bottom: 0;
+    bottom: -50%;
 
-    width: 5%;
+    width: clamp( 5rem, 5%, 30rem );
     aspect-ratio: 1/1;
 
-    animation-name: name;
-    animation-duration: 500ms;
+    animation-name: animFloatingBackgroundImage;
+    animation-duration: 15s;
     animation-timing-function: linear;
-    animation-iteration-count: 1;
-    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
     animation-fill-mode: forwards;
+
+    mix-blend-mode: overlay;
+    filter: brightness(0.4) invert(.7);
+
 }
 
 .showModal {
@@ -378,9 +420,10 @@ input, button {
 
 @keyframes animFloatingBackgroundImage {
     0% {
-        bottom: -5%;
+        top: 150%;
     }
     100% {
-        bottom: 105%;
+        top: -50%;
+        rotate: 0deg;
     }
 }

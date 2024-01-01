@@ -1,0 +1,441 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+:root {
+  --purple-body-bg: rgb(43, 17, 43);
+  --blue-body-bg: rgb(11, 30, 52);
+  --green-body-bg: rgb(6, 35, 19);
+  --yellow-body-bg: rgb(39, 34, 5);
+  --orange-body-bg: rgb(41, 16, 5);
+  --red-body-bg: rgb(27, 2, 13);
+  --purple-bg: rgb(253, 134, 255);
+  --blue-bg: rgb(0, 174, 255);
+  --green-bg: rgb(134, 255, 187);
+  --yellow-bg: rgb(255, 255, 134);
+  --orange-bg: rgb(255, 187, 134);
+  --red-bg: rgb(255, 134, 134);
+  --purple-col: rgb(222, 91, 255);
+  --blue-col: rgb(31, 121, 238);
+  --green-col: rgb(32, 250, 127);
+  --yellow-col: rgb(249, 249, 24);
+  --orange-col: rgb(251, 115, 12);
+  --red-col: rgb(250, 13, 13);
+  --black-bg: rgb(20, 20, 20);
+  --white: rgb(234, 234, 234);
+  --gradient: linear-gradient(180deg, rgb(29, 29, 29) 0%, rgb(40, 40, 40) 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  background: var(--black-bg);
+  color: var(--white);
+  position: relative;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+hr {
+  border: 2px solid var(--white);
+  border-radius: 100rem;
+  opacity: 0.5;
+  margin: 1.5rem auto;
+  width: 30%;
+}
+
+h2 {
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+#phrase {
+  font-size: 24px;
+  margin: 20px;
+}
+
+input, button {
+  outline: none;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  background: none;
+  color: var(--white);
+}
+
+.inputContainer {
+  width: 100%;
+}
+
+.inputWrapper {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.buttons {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 40%;
+  gap: 0.5rem;
+  margin: 0 auto;
+  grid-template-rows: unset;
+}
+
+#newGameButton {
+  padding: 1rem 2rem;
+}
+
+.inputButton {
+  font-size: 20px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  outline: 1px solid var(--white);
+}
+
+.inputButton:hover {
+  background-color: var(--white);
+  color: var(--black-bg);
+}
+
+.inputNumber {
+  border-radius: 0.5rem;
+  font-size: 40px;
+  font-weight: 900;
+  display: inline;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  width: 40%;
+  outline: 1px solid var(--white);
+  margin-bottom: 1rem;
+}
+
+#songs {
+  list-style: none;
+  position: relative;
+  z-index: 3;
+  mix-blend-mode: screen;
+}
+
+.song {
+  border: 1px solid #555;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  background: var(--gradient);
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}
+
+.song .title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.song .title::before {
+  content: "“";
+}
+
+.song .title::after {
+  content: "”";
+}
+
+.song .artist {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.point {
+  width: 1rem;
+  aspect-ratio: 1/1;
+  border-radius: 100rem;
+  background-color: var(--point-color);
+}
+
+.alert {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 50%;
+  margin: 0 auto;
+  color: var(--black-bg);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.blue, .points-5 {
+  background-color: var(--blue-bg);
+  outline: 3px solid var(--blue-col);
+}
+
+.green, .points-4 {
+  background-color: var(--green-bg);
+  /* --point-color: var(--green-bg); */
+  outline: 3px solid var(--green-col);
+}
+
+.yellow, .points-3 {
+  background-color: var(--yellow-bg);
+  /* --point-color: var(--yellow-bg); */
+  outline: 3px solid var(--yellow-col);
+}
+
+.orange, .points-2 {
+  background-color: var(--orange-bg);
+  /* --point-color: var(--orange-bg); */
+  outline: 3px solid var(--orange-col);
+}
+
+.red, .points-1, .points-0 {
+  background-color: var(--red-bg);
+  /* --point-color: var(--red-bg); */
+  outline: 3px solid var(--red-col);
+}
+
+.song-5 {
+  outline: 3px solid var(--blue-col);
+}
+
+.song-4 {
+  outline: 3px solid var(--green-col);
+}
+
+.song-3 {
+  outline: 3px solid var(--yellow-col);
+}
+
+.song-2 {
+  outline: 3px solid var(--orange-col);
+}
+
+.song-1, .song-0 {
+  outline: 3px solid var(--red-col);
+}
+
+.body-5 {
+  background: var(--blue-body-bg);
+}
+
+.body-4 {
+  background: var(--green-body-bg);
+}
+
+.body-3 {
+  background: var(--yellow-body-bg);
+}
+
+.body-2 {
+  background: var(--orange-body-bg);
+}
+
+.body-1, .body-0 {
+  background: var(--red-body-bg);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.inputNumber[disabled],
+.inputButton[disabled] {
+  opacity: 0.25;
+  cursor: unset;
+}
+
+.inputNumber[disabled],
+.inputButton[disabled]:hover {
+  background: unset;
+  color: unset;
+}
+
+.rainbowGradient {
+  background: linear-gradient(to right, var(--purple-bg), var(--blue-bg), var(--green-bg), var(--yellow-bg), var(--orange-bg), var(--red-bg));
+  background-size: 500% 100%;
+  animation: animRainbowGradient 1s ease-in-out alternate infinite;
+  color: var(--black-bg);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@keyframes animRainbowGradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+@media (width < 800px) {
+  .inputNumber,
+  .buttons,
+  .alert,
+  .song {
+    width: 80%;
+  }
+}
+.modal {
+  display: none;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(12, 10, 21, 0.6);
+  z-index: 9;
+}
+
+.modal .modal-content {
+  width: clamp(60vw, 60vw, 80%);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 12;
+  background-color: var(--color-dark);
+  border: 1px solid #555;
+  border-radius: 10px;
+  padding: 15px;
+  background: var(--gradient);
+  mix-blend-mode: screen;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}
+
+.modal .modal-content p {
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.bodyBackgroundWrapper {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(1) {
+  animation-delay: 800ms;
+  rotate: 215deg;
+  left: 83%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(2) {
+  animation-delay: 1600ms;
+  rotate: -240deg;
+  left: 57%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(3) {
+  animation-delay: 2400ms;
+  rotate: 120deg;
+  left: 16%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(4) {
+  animation-delay: 3200ms;
+  rotate: 540deg;
+  left: 50%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(5) {
+  animation-delay: 4000ms;
+  rotate: -240deg;
+  left: 67%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(6) {
+  animation-delay: 4800ms;
+  rotate: 120deg;
+  left: 44%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(7) {
+  animation-delay: 5600ms;
+  rotate: 540deg;
+  left: 55%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(8) {
+  animation-delay: 6400ms;
+  rotate: -240deg;
+  left: 67%;
+}
+
+.bodyBackgroundWrapper > img:nth-of-type(9) {
+  animation-delay: 7200ms;
+  rotate: 120deg;
+  left: 6%;
+}
+
+.bodyBackgroundWrapper img {
+  position: absolute;
+  bottom: -50%;
+  width: clamp(5rem, 5%, 30rem);
+  aspect-ratio: 1/1;
+  animation-name: animFloatingBackgroundImage;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  mix-blend-mode: overlay;
+  filter: brightness(0.4) invert(0.7);
+}
+
+.showModal {
+  display: flex;
+  animation-name: animShowModal;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0ms;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animShowModal {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animFloatingBackgroundImage {
+  0% {
+    top: 150%;
+  }
+  100% {
+    top: -50%;
+    rotate: 0deg;
+  }
+}/*# sourceMappingURL=style.css.map */
