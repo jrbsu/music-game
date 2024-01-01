@@ -1,6 +1,6 @@
 :root {
     --purple-bg: rgb(253, 134, 255);
-    --blue-bg: rgb(114, 150, 255);
+    --blue-bg: rgb(0, 174, 255);
     --green-bg: rgb(134, 255, 187);
     --yellow-bg: rgb(255, 255, 134);
     --orange-bg: rgb(255, 187, 134);
@@ -45,7 +45,7 @@ hr {
 }
 
 #headerContainer {
-
+    display: sticky;
 }
 h2 {
     font-weight: 400;
@@ -174,28 +174,29 @@ input, button {
 
 .blue, .points-5 {
     background-color: var(--blue-bg);
+    outline: 3px solid var(--blue-col);
 }
 
 .green, .points-4 {
     background-color: var(--green-bg);
-    /* --point-color: var(--green-bg); */
+    /* --point-color: var(--green-bg); */    outline: 3px solid var(--green-col);
 }
 
 .yellow, .points-3 {
     background-color: var(--yellow-bg);
-    /* --point-color: var(--yellow-bg); */
+    /* --point-color: var(--yellow-bg); */    outline: 3px solid var(--yellow-col);
 }
 
 .orange, .points-2 {
     background-color: var(--orange-bg);
-    /* --point-color: var(--orange-bg); */
+    /* --point-color: var(--orange-bg); */    outline: 3px solid var(--orange-col);
 }
 
 .red, .points-1, .points-0 {
     background-color: var(--red-bg);
     /* --point-color: var(--red-bg); */
+    outline: 3px solid var(--red-col);
 }
-
 
 .hidden {
     display: none;
