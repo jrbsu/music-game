@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which year?</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="headerContainer">
+        <h1>Music guessing game</h1>
+        <h2>Which year did these songs reach number one?</h2>
+    </div>
+
+    <hr>
+
+    <div id="inputContainer">
+        <div class="inputWrapper">
+            <input 
+                class="inputNumber"
+                type="text"
+                id="guess"
+                maxlength="4"
+                min="1953"
+                max="2023"
+                autocomplete="off"
+                placeholder="Year..."
+            />
+        </div>
+        <span class="buttons">
+            <button class="inputButton" id="guessButton">Guess</button>
+            <button class="inputButton" id="nextSongButton">Skip</button>
+            <button class="inputButton" id="giveUpButton">Give Up</button>
+        </span>
+    </div>
+
+    <hr>
+
+    <div id="points" class="alert points-5"></div>
+    
+    <br>
+
+    <ul id="songs">
+        <div class="song">
+            <div class="title"></div>
+            <div class="artist"></div>
+        </div>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

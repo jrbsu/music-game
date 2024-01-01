@@ -1,0 +1,239 @@
+:root {
+    --purple-bg: rgb(253, 134, 255);
+    --blue-bg: rgb(114, 150, 255);
+    --green-bg: rgb(134, 255, 187);
+    --yellow-bg: rgb(255, 255, 134);
+    --orange-bg: rgb(255, 187, 134);
+    --red-bg: rgb(255, 134, 134);
+    
+    --purple-col: rgb(222, 91, 255);
+    --blue-col: rgb(31, 121, 238);
+    --green-col: rgb(32, 250, 127);
+    --yellow-col: rgb(249, 249, 24);
+    --orange-col: rgb(251, 115, 12);
+    --red-col: rgb(250, 13, 13);
+    
+    --black-bg: rgb(10, 10, 10);
+    --white: rgb(234, 234, 234);
+    --gradient: linear-gradient(180deg, rgb(29, 29, 29) 0%, rgb(40, 40, 40) 100%);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background: var(--black-bg);
+    color: var(--white);
+    position: relative;
+    min-height: 100vh;
+}
+
+hr {
+    border: 2px solid var(--white);
+    border-radius: 100rem;
+    opacity: 0.5;
+    margin: 1.5rem auto;
+    width: 30%;
+}
+
+#headerContainer {
+
+}
+h2 {
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+#phrase {
+    font-size: 24px;
+    margin: 20px;
+}
+
+input, button {
+    outline: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+    color: var(--white);
+}
+
+#inputContainer {
+    width: 100%;
+}
+
+.inputWrapper {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.buttons {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 3;
+    grid-template-rows: 1;
+}
+
+.inputButton {
+    font-size: 20px;
+    border-radius: 0.5rem;
+    outline: 1px solid var(--white);
+}
+.inputButton:hover {
+    background-color: var(--white);
+    color: var(--black-bg);
+}
+
+.inputNumber {
+    border-radius: 0.5rem;
+    font-size: 40px;
+    font-weight: 900;
+    display: inline;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: fit-content;
+    outline: 1px solid var(--white);
+    margin-bottom: 1rem;
+}
+
+.inputButton {
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#songs {
+    list-style: none;
+}
+
+.song {
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    background: var(--gradient);
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+
+.song .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.song .title::before {
+    content: "“";
+}
+
+.song .title::after {
+    content: "”";
+}
+
+.song .artist {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.point {
+    width: 1rem;
+    aspect-ratio: 1/1;
+    border-radius: 100rem;
+    background-color: var(--point-color);
+}
+
+.alert {
+    border: 1px solid #500;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 50%;
+    margin: 0 auto;
+    color: var(--black-bg);
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+}
+
+.blue, .points-5 {
+    background-color: var(--blue-bg);
+}
+
+.green, .points-4 {
+    background-color: var(--green-bg);
+    /* --point-color: var(--green-bg); */
+}
+
+.yellow, .points-3 {
+    background-color: var(--yellow-bg);
+    /* --point-color: var(--yellow-bg); */
+}
+
+.orange, .points-2 {
+    background-color: var(--orange-bg);
+    /* --point-color: var(--orange-bg); */
+}
+
+.red, .points-1, .points-0 {
+    background-color: var(--red-bg);
+    /* --point-color: var(--red-bg); */
+}
+
+
+.hidden {
+    display: none;
+}
+
+.inputNumber[disabled],
+.inputButton[disabled] {
+    opacity: .25;
+    cursor: unset;
+}
+.inputNumber[disabled],
+.inputButton[disabled]:hover {
+    background: unset;
+    color: unset
+}
+
+.rainbowGradient {
+    background: linear-gradient(to right, var( --purple-bg ), var( --blue-bg ), var( --green-bg ), var( --yellow-bg ), var( --orange-bg ), var( --red-bg ) );
+    background-size: 500% 100%;
+    animation: animRainbowGradient 1s ease-in-out alternate infinite;
+    color: var(--black-bg);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+@keyframes animRainbowGradient {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+}
+
+@media ( width < 720px ) {
+    .buttons {
+        grid-template-columns: 1;
+    }
+}
