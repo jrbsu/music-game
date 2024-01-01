@@ -79,13 +79,18 @@ input, button {
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: 3;
-    grid-template-rows: 1;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 40%;
+    gap: 0.5rem;
+    margin: 0 auto;
+    grid-template-rows: unset;
 }
 
 .inputButton {
     font-size: 20px;
     border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
     outline: 1px solid var(--white);
 }
 .inputButton:hover {
@@ -100,16 +105,9 @@ input, button {
     display: inline;
     text-align: center;
     margin-bottom: 0.5rem;
-    width: 100%;
-    height: fit-content;
+    width: 40%;
     outline: 1px solid var(--white);
     margin-bottom: 1rem;
-}
-
-.inputButton {
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 10px;
 }
 
 #songs {
@@ -232,8 +230,11 @@ input, button {
     }
 }
 
-@media ( width < 720px ) {
-    .buttons {
-        grid-template-columns: 1;
+@media ( width < 800px ) {
+    .inputNumber,
+    .buttons,
+    .alert,
+    .song {
+        width: 80%;
     }
 }
