@@ -1,4 +1,11 @@
 :root {
+    --purple-body-bg: rgb(43, 17, 43);
+    --blue-body-bg: rgb(11, 30, 52);
+    --green-body-bg: rgb(6, 35, 19);
+    --yellow-body-bg: rgb(39, 34, 5);
+    --orange-body-bg: rgb(41, 16, 5);
+    --red-body-bg: rgb(27, 2, 13);
+
     --purple-bg: rgb(253, 134, 255);
     --blue-bg: rgb(0, 174, 255);
     --green-bg: rgb(134, 255, 187);
@@ -13,7 +20,7 @@
     --orange-col: rgb(251, 115, 12);
     --red-col: rgb(250, 13, 13);
     
-    --black-bg: rgb(10, 10, 10);
+    --black-bg: rgb(20, 20, 20);
     --white: rgb(234, 234, 234);
     --gradient: linear-gradient(180deg, rgb(29, 29, 29) 0%, rgb(40, 40, 40) 100%);
 }
@@ -24,16 +31,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease-out;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    padding: 20px;
     background: var(--black-bg);
     color: var(--white);
     position: relative;
     min-height: 100vh;
+    padding-top: 20px;
 }
 
 hr {
@@ -45,7 +53,7 @@ hr {
 }
 
 #headerContainer {
-    display: sticky;
+    
 }
 h2 {
     font-weight: 400;
@@ -66,7 +74,7 @@ input, button {
     color: var(--white);
 }
 
-#inputContainer {
+.inputContainer {
     width: 100%;
 }
 
@@ -86,6 +94,9 @@ input, button {
     grid-template-rows: unset;
 }
 
+#newGameButton {
+    padding: 1rem 2rem;
+}
 .inputButton {
     font-size: 20px;
     border-radius: 0.5rem;
@@ -120,6 +131,7 @@ input, button {
     padding: 15px;
     margin: 10px 0;
     background: var(--gradient);
+    mix-blend-mode: screen;
     width: 50%;
     margin: 0 auto;
     margin-top: 0.5rem;
@@ -160,16 +172,14 @@ input, button {
 }
 
 .alert {
-    border: 1px solid #500;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     margin: 10px 0;
     width: 50%;
     margin: 0 auto;
     color: var(--black-bg);
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
-    
 }
 
 .blue, .points-5 {
@@ -198,8 +208,34 @@ input, button {
     outline: 3px solid var(--red-col);
 }
 
+.song-5 {
+    outline: 3px solid var(--blue-col);
+}
+
+.song-4 {
+    outline: 3px solid var(--green-col);
+}
+
+.song-3 {
+    outline: 3px solid var(--yellow-col);
+}
+
+.song-2 {
+    outline: 3px solid var(--orange-col);
+}
+
+.song-1, .song-0 {
+    outline: 3px solid var(--red-col);
+}
+
+.body-5 { background: var(--blue-body-bg); }
+.body-4 { background: var(--green-body-bg); }
+.body-3 { background: var(--yellow-body-bg); }
+.body-2 { background: var(--orange-body-bg); }
+.body-1, .body-0 { background: var(--red-body-bg); }
+
 .hidden {
-    display: none;
+    display: none!important;
 }
 
 .inputNumber[disabled],
@@ -210,7 +246,7 @@ input, button {
 .inputNumber[disabled],
 .inputButton[disabled]:hover {
     background: unset;
-    color: unset
+    color: unset;
 }
 
 .rainbowGradient {
@@ -237,5 +273,114 @@ input, button {
     .alert,
     .song {
         width: 80%;
+    }
+}
+
+.modal {
+    display: none;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(12, 10, 21, 0.6);
+    z-index: 9;
+}
+
+.modal .modal-content {
+    width: clamp(60vw, 60vw, 80%);
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 12;
+    background-color: var(--color-dark);
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 15px;
+    background: var(--gradient);
+    mix-blend-mode: screen;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+
+.modal .modal-content p {
+    font-size: 2rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.bodyBackgroundWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+}
+
+.bodyBackgroundWrapper img :nth-child( 1 ) {
+    animation-delay: 0ms;
+    left: 20%;
+}
+.bodyBackgroundWrapper img :nth-child( 2 ) {
+    animation-delay: 0ms;
+    left: 40%;
+}
+.bodyBackgroundWrapper img :nth-child( 3 ) {
+    animation-delay: 0ms;
+    left: 60%;
+}
+
+.bodyBackgroundWrapper img {
+    position: absolute;
+    bottom: 0;
+
+    width: 5%;
+    aspect-ratio: 1/1;
+
+    animation-name: name;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+.showModal {
+    display: flex;
+
+    animation-name: animShowModal;
+    animation-duration: 800ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0ms;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animShowModal {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes animFloatingBackgroundImage {
+    0% {
+        bottom: -5%;
+    }
+    100% {
+        bottom: 105%;
     }
 }
