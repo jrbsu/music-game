@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Which year did these songs reach number one?</title>
-    <link rel="stylesheet" href="./css/style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Which year did these songs reach number one?</title>
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
 <body class="body-5">
-    <div id="headerContainer">
-        <h1>Guess the year!</h1>
-        <h2>In which year did these songs reach number one?</h2>
+  <div id="headerContainer">
+    <h1>Guess the year!</h1>
+    <h2>In which year did these songs reach number one?</h2>
+  </div>
+
+  <hr>
+
+  <div id="endGameInput" class="hidden">
+    <button id="newGameButton" class="inputButton">New Game</button>
+  </div>
+
+  <div id="inGameInput" class="inputContainer">
+    <input 
+      class="inputNumber"
+      type="text"
+      id="guess"
+      maxlength="4"
+      min="1953"
+      max="2023"
+      autocomplete="off"
+      placeholder="Year..."
+    />
+    <span class="buttons">
+      <button class="inputButton" id="guessButton">Guess</button>
+      <button class="inputButton" id="nextSongButton">Skip</button>
+      <button class="inputButton" id="giveUpButton">Give&nbsp;Up</button>
+    </span>
+
+  </div>
+
+  <hr>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text"></p>
     </div>
+  </div>
+  <div id="points" class="alert points-5"></div>
+  
+  <br>
 
-    <hr>
-
-    <div id="endGameInput" class="hidden">
-        <button id="newGameButton" class="inputButton">New Game</button>
+  <ul id="songs">
+    <div class="song song-5">
+      <div class="title"></div>
+      <div class="artist"></div>
     </div>
+  </ul>
 
-    <div id="inGameInput" class="inputContainer">
-        <input 
-            class="inputNumber"
-            type="text"
-            id="guess"
-            maxlength="4"
-            min="1953"
-            max="2023"
-            autocomplete="off"
-            placeholder="Year..."
-        />
-        <span class="buttons">
-            <button class="inputButton" id="guessButton">Guess</button>
-            <button class="inputButton" id="nextSongButton">Skip</button>
-            <button class="inputButton" id="giveUpButton">Give&nbsp;Up</button>
-        </span>
-
-    </div>
-
-    <hr>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <p id="modal-text"></p>
-        </div>
-    </div>
-    <div id="points" class="alert points-5"></div>
-    
-    <br>
-
-    <ul id="songs">
-        <div class="song song-5">
-            <div class="title"></div>
-            <div class="artist"></div>
-        </div>
-    </ul>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

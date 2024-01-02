@@ -40,8 +40,10 @@ body {
     background: var(--black-bg);
     color: var(--white);
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     padding-top: 20px;
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
 }
 
 hr {
@@ -52,9 +54,6 @@ hr {
     width: 30%;
 }
 
-#headerContainer {
-    
-}
 h2 {
     font-weight: 400;
     font-style: italic;
@@ -232,11 +231,49 @@ input, button {
     outline: 3px solid var(--red-col);
 }
 
-.body-5 { background: var(--blue-body-bg); }
-.body-4 { background: var(--green-body-bg); }
-.body-3 { background: var(--yellow-body-bg); }
-.body-2 { background: var(--orange-body-bg); }
-.body-1, .body-0 { background: var(--red-body-bg); }
+// .body-5 { background: var(--blue-body-bg); }
+// .body-4 { background: var(--green-body-bg); }
+// .body-3 { background: var(--yellow-body-bg); }
+// .body-2 { background: var(--orange-body-bg); }
+// .body-1, .body-0 { background: var(--red-body-bg); }
+
+.body-5 {
+    background: linear-gradient(180deg, var(--blue-body-bg), var(--black-bg));
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
+}
+.body-4 {
+    background: linear-gradient(180deg, var(--green-body-bg), var(--black-bg));
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
+}
+.body-3 {
+    background: linear-gradient(180deg, var(--yellow-body-bg), var(--black-bg));
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
+}
+.body-2 {
+    background: linear-gradient(180deg, var(--orange-body-bg), var(--black-bg));
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
+}
+.body-1, .body-0 {
+    background: linear-gradient(180deg, var(--red-body-bg), var(--black-bg));
+    background-size: 100% 200%;
+    animation: flowGradient 10s linear infinite;
+}
+
+@keyframes flowGradient {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 0 100%;
+    }
+    100% {
+        background-position: 0 0%;
+    }
+}
 
 .hidden {
     display: none!important;

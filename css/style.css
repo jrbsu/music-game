@@ -37,8 +37,10 @@ body {
   background: var(--black-bg);
   color: var(--white);
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   padding-top: 20px;
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
 hr {
@@ -230,25 +232,46 @@ input, button {
 }
 
 .body-5 {
-  background: var(--blue-body-bg);
+  background: linear-gradient(180deg, var(--blue-body-bg), var(--black-bg));
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
 .body-4 {
-  background: var(--green-body-bg);
+  background: linear-gradient(180deg, var(--green-body-bg), var(--black-bg));
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
 .body-3 {
-  background: var(--yellow-body-bg);
+  background: linear-gradient(180deg, var(--yellow-body-bg), var(--black-bg));
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
 .body-2 {
-  background: var(--orange-body-bg);
+  background: linear-gradient(180deg, var(--orange-body-bg), var(--black-bg));
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
 .body-1, .body-0 {
-  background: var(--red-body-bg);
+  background: linear-gradient(180deg, var(--red-body-bg), var(--black-bg));
+  background-size: 100% 200%;
+  animation: flowGradient 10s linear infinite;
 }
 
+@keyframes flowGradient {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 0%;
+  }
+}
 .hidden {
   display: none !important;
 }
@@ -338,14 +361,14 @@ input, button {
 
 .bodyBackgroundWrapper > img:nth-of-type(1) {
   animation-delay: 800ms;
-  rotate: 215deg;
-  left: 83%;
+  rotate: 259deg;
+  left: 26%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(2) {
   animation-delay: 1600ms;
   rotate: -240deg;
-  left: 57%;
+  left: 13%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(3) {
@@ -357,37 +380,37 @@ input, button {
 .bodyBackgroundWrapper > img:nth-of-type(4) {
   animation-delay: 3200ms;
   rotate: 540deg;
-  left: 50%;
+  left: 99%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(5) {
   animation-delay: 4000ms;
   rotate: -240deg;
-  left: 67%;
+  left: 71%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(6) {
   animation-delay: 4800ms;
   rotate: 120deg;
-  left: 44%;
+  left: 66%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(7) {
   animation-delay: 5600ms;
   rotate: 540deg;
-  left: 55%;
+  left: 42%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(8) {
   animation-delay: 6400ms;
   rotate: -240deg;
-  left: 67%;
+  left: 55%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(9) {
   animation-delay: 7200ms;
   rotate: 120deg;
-  left: 6%;
+  left: 97%;
 }
 
 .bodyBackgroundWrapper img {
