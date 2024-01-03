@@ -13,12 +13,13 @@
   --yellow-bg: rgb(255, 255, 134);
   --orange-bg: rgb(255, 187, 134);
   --red-bg: rgb(255, 134, 134);
-  --purple-col: rgb(222, 91, 255);
-  --blue-col: rgb(31, 121, 238);
-  --green-col: rgb(32, 250, 127);
-  --yellow-col: rgb(249, 249, 24);
-  --orange-col: rgb(251, 115, 12);
-  --red-col: rgb(250, 13, 13);
+  --point-color: rgb(31, 121, 238);
+  --purple-col: 222, 91, 255;
+  --blue-col: 31, 121, 238;
+  --green-col: 32, 250, 127;
+  --yellow-col: 249, 249, 24;
+  --orange-col: 251, 115, 12;
+  --red-col: 250, 13, 13;
   --black-bg: rgb(20, 20, 20);
   --white: rgb(234, 234, 234);
   --gradient: linear-gradient(180deg, rgb(29, 29, 29) 0%, rgb(40, 40, 40) 100%);
@@ -84,7 +85,7 @@ input, button {
   align-items: center;
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 40%;
+  width: 50%;
   gap: 0.5rem;
   margin: 0 auto;
   grid-template-rows: unset;
@@ -114,7 +115,7 @@ input, button {
   display: inline;
   text-align: center;
   margin-bottom: 0.5rem;
-  width: 40%;
+  width: 50%;
   outline: 1px solid var(--white);
   margin-bottom: 1rem;
 }
@@ -164,6 +165,11 @@ input, button {
   margin: 0 auto;
 }
 
+#pointsText {
+  color: #fff;
+  text-shadow: 0 1px 0 #1f1e21, 0 -1px 0 #1f1e21, 1px 0 0 #1f1e21, -1px 0 0 #1f1e21;
+}
+
 .point {
   width: 1rem;
   aspect-ratio: 1/1;
@@ -184,81 +190,77 @@ input, button {
 
 .blue, .points-5 {
   background-color: var(--blue-bg);
-  outline: 3px solid var(--blue-col);
+  outline: 3px solid rgb(var(--blue-col));
 }
 
 .green, .points-4 {
   background-color: var(--green-bg);
-  /* --point-color: var(--green-bg); */
-  outline: 3px solid var(--green-col);
+  outline: 3px solid rgb(var(--green-col));
 }
 
 .yellow, .points-3 {
   background-color: var(--yellow-bg);
-  /* --point-color: var(--yellow-bg); */
-  outline: 3px solid var(--yellow-col);
+  outline: 3px solid rgb(var(--yellow-col));
 }
 
 .orange, .points-2 {
   background-color: var(--orange-bg);
-  /* --point-color: var(--orange-bg); */
-  outline: 3px solid var(--orange-col);
+  outline: 3px solid rgb(var(--orange-col));
 }
 
 .red, .points-1, .points-0 {
   background-color: var(--red-bg);
-  /* --point-color: var(--red-bg); */
-  outline: 3px solid var(--red-col);
+  outline: 3px solid rgb(var(--red-col));
 }
 
 .song-5 {
-  outline: 3px solid var(--blue-col);
+  outline: 3px solid rgb(var(--blue-col));
 }
 
 .song-4 {
-  outline: 3px solid var(--green-col);
+  outline: 3px solid rgb(var(--green-col));
 }
 
 .song-3 {
-  outline: 3px solid var(--yellow-col);
+  outline: 3px solid rgb(var(--yellow-col));
 }
 
 .song-2 {
-  outline: 3px solid var(--orange-col);
+  outline: 3px solid rgb(var(--orange-col));
 }
 
 .song-1, .song-0 {
-  outline: 3px solid var(--red-col);
+  outline: 3px solid rgb(var(--red-col));
+}
+
+body {
+  background-size: 100% 200%;
+  animation: flowGradient 5s linear infinite;
 }
 
 .body-5 {
-  background: linear-gradient(180deg, var(--blue-body-bg), var(--black-bg));
-  background-size: 100% 200%;
-  animation: flowGradient 10s linear infinite;
+  background-color: var(--blue-body-bg);
+  background-image: linear-gradient(180deg, var(--blue-body-bg), rgba(var(--blue-col), 0.5));
 }
 
 .body-4 {
-  background: linear-gradient(180deg, var(--green-body-bg), var(--black-bg));
-  background-size: 100% 200%;
-  animation: flowGradient 10s linear infinite;
+  background-color: var(--green-body-bg);
+  background-image: linear-gradient(180deg, var(--green-body-bg), rgba(var(--green-col), 0.5));
 }
 
 .body-3 {
-  background: linear-gradient(180deg, var(--yellow-body-bg), var(--black-bg));
-  background-size: 100% 200%;
-  animation: flowGradient 10s linear infinite;
+  background-color: var(--yellow-body-bg);
+  background-image: linear-gradient(180deg, var(--yellow-body-bg), rgba(var(--yellow-col), 0.5));
 }
 
 .body-2 {
-  background: linear-gradient(180deg, var(--orange-body-bg), var(--black-bg));
-  background-size: 100% 200%;
-  animation: flowGradient 10s linear infinite;
+  background-color: var(--orange-body-bg);
+  background-image: linear-gradient(180deg, var(--orange-body-bg), rgba(var(--orange-col), 0.5));
 }
 
 .body-1, .body-0 {
-  background: linear-gradient(180deg, var(--red-body-bg), var(--black-bg));
-  background-size: 100% 200%;
-  animation: flowGradient 10s linear infinite;
+  background-color: var(--red-body-bg);
+  background-image: linear-gradient(180deg, var(--red-body-bg), rgba(var(--red-col), 0.5));
 }
 
 @keyframes flowGradient {
@@ -266,7 +268,7 @@ input, button {
     background-position: 0 0;
   }
   50% {
-    background-position: 0 100%;
+    background-position: 0 50%;
   }
   100% {
     background-position: 0 0%;
@@ -361,56 +363,56 @@ input, button {
 
 .bodyBackgroundWrapper > img:nth-of-type(1) {
   animation-delay: 800ms;
-  rotate: 259deg;
-  left: 26%;
+  rotate: 309deg;
+  left: 22%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(2) {
   animation-delay: 1600ms;
   rotate: -240deg;
-  left: 13%;
+  left: 95%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(3) {
   animation-delay: 2400ms;
   rotate: 120deg;
-  left: 16%;
+  left: 35%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(4) {
   animation-delay: 3200ms;
   rotate: 540deg;
-  left: 99%;
+  left: 21%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(5) {
   animation-delay: 4000ms;
   rotate: -240deg;
-  left: 71%;
+  left: 59%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(6) {
   animation-delay: 4800ms;
   rotate: 120deg;
-  left: 66%;
+  left: 59%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(7) {
   animation-delay: 5600ms;
   rotate: 540deg;
-  left: 42%;
+  left: 48%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(8) {
   animation-delay: 6400ms;
   rotate: -240deg;
-  left: 55%;
+  left: 76%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(9) {
   animation-delay: 7200ms;
   rotate: 120deg;
-  left: 97%;
+  left: 33%;
 }
 
 .bodyBackgroundWrapper img {
@@ -441,9 +443,6 @@ input, button {
 
 @keyframes animShowModal {
   0% {
-    opacity: 0;
-  }
-  20% {
     opacity: 1;
   }
   80% {
@@ -451,14 +450,5 @@ input, button {
   }
   100% {
     opacity: 0;
-  }
-}
-@keyframes animFloatingBackgroundImage {
-  0% {
-    top: 150%;
-  }
-  100% {
-    top: -50%;
-    rotate: 0deg;
   }
 }/*# sourceMappingURL=style.css.map */

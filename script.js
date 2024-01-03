@@ -1,22 +1,27 @@
 const MAX_ATTEMPTS = 5;
-let points = MAX_ATTEMPTS;
-let thisYear = 0;
-let total = 0;
+let points         = MAX_ATTEMPTS;
+let thisYear       = 0;
+let total          = 0;
 let game_over_text = "Bad luck!"
+let success        = false
 
 let all_songs = []
 let songs     = []
 
+let timerInterval = null
+let timerPercent  = 100
+
 const MIN_YEAR = 1953
 const MAX_YEAR = 2023
 
-const pointsElement  = document.getElementById( "points")
-const guessInput     = document.getElementById( "guess" )
-const guessButton    = document.getElementById( "guessButton" )
-const giveUpButton   = document.getElementById( "giveUpButton" )
-const nextSongButton = document.getElementById( "nextSongButton" )
-const newGameButton  = document.getElementById( "newGameButton" )
-const songItems      = document.getElementById( "songs" )
+const pointsElement      = document.getElementById( "points" )
+const pointsTextElement  = document.getElementById( "pointsText" )
+const guessInput         = document.getElementById( "guess" )
+const guessButton        = document.getElementById( "guessButton" )
+const giveUpButton       = document.getElementById( "giveUpButton" )
+const nextSongButton     = document.getElementById( "nextSongButton" )
+const newGameButton      = document.getElementById( "newGameButton" )
+const songItems          = document.getElementById( "songs" )
 
 const endGameInput   = document.getElementById( "endGameInput" )
 const inGameInput    = document.getElementById( "inGameInput" )
@@ -45,17 +50,21 @@ async function fetchTracks() {
 
 async function nextRound() {
   await fetchTracks()
+  points = MAX_ATTEMPTS
 
+  resetTimerInterval()
   thisYear = randomYear();
+
   songs = []
   game_over_text = "Bad luck! The year was " + thisYear
   all_songs.forEach( element => {
-    const year = element["year"]
-    const title = element["title"]
-    const artist = element["artist"]
+    const year     = element["year"]
+    const title    = element["title"]
+    const artist   = element["artist"]
+    const video_id = element["video_id"]
 
     if ( thisYear === year )
-      songs.push([title, artist])
+      songs.push([title, artist, video_id])
   });
 
   shuffleArray( songs )
@@ -65,31 +74,59 @@ async function nextRound() {
   startGame()
 }
 
-guessInput.addEventListener( "input", e => {
-  e.target.value = e.target.value.replace( /[^0-9]/g, "" )
-} )
-
-nextSongButton.addEventListener( "click", handleIncorrect );
-
 function newSong() {
   guessInput.focus()
   removeSongItemClasses()
 
-  if ( points > 1 )
+  if ( points > 1 ) {
     songItems.prepend( createNewSongItem() );
+    // createYouTubeVideo();
+  }
 
   points--
   updatePointsBox()
+  updateBodyBackground( points )
+  resetTimerInterval()
 
   if ( points === 0 ) handleGameOver()
 }
 
 function createNewSongItem() {
-  const songElement = document.createElement( "div" )
+  const songElement = document.createElement( "div" );
   songElement.className = "song song-" + (points - 1)
   songElement.innerHTML = `<div class="title">${ songs[points][0] }</div><div class="artist">${ songs[points][1] }</div>`
 
   return songElement
+}
+
+function createYouTubeVideo() {
+  const youtubePlayer = document.getElementById( "youtube" );
+  youtubePlayer.innerHTML = `<iframe id="youtube" width="400" height="200" src="https://www.youtube.com/embed/${songs[points][2]}?&autoplay=1" frameborder="0" allowfullscreen></iframe>`
+  console.log(youtubePlayer.innerHTML)
+}
+
+function resetTimerInterval() {
+  timerPercent = 100
+  clearInterval( timerInterval )
+  timerIntervalCallback()
+
+  if ( points <= 0 && success === false ) return
+  timerInterval = setInterval( timerIntervalCallback, 10 );
+}
+
+function timerIntervalCallback() {
+  if ( timerPercent < 0 && success === false ) {
+    clearInterval( timerInterval )
+    newSong()
+    return 
+  }
+
+  if ( success === false ) {
+    pointsElement.style = "background: " + pointsGradient();
+    timerPercent -= 0.1;
+  } else {
+    pointsElement.style.background = null;
+  }
 }
 
 function removeSongItemClasses() {
@@ -107,7 +144,7 @@ function removeClassByPrefix(node, prefix) {
 }
 
 function handleGameOver() {
-  pointsElement.innerHTML = game_over_text;
+  pointsTextElement.innerHTML = game_over_text;
   total = 0;
   removeSongItemClasses()
   setDisableAllElements( true )
@@ -115,17 +152,21 @@ function handleGameOver() {
 }
 
 function handleSuccess() {
+  success = true
   var pointsNode = document.getElementById("points");
+  removeSongItemClasses();
   removeClassByPrefix(pointsNode, "points-");
   document.getElementById("points").classList.add("rainbowGradient");
   total += points;
-  pointsElement.innerHTML = `${thisYear} is right! You win ${points} point${points === 1 ? "" : "s"}!!<br />Now you have ${total} point${total === 1 ? "" : "s"}.`
+  pointsTextElement.innerHTML = `${thisYear} is right! You win ${points} point${points === 1 ? "" : "s"}!!<br />Now you have ${total} point${total === 1 ? "" : "s"}.`
   setDisableAllElements( true )
   showEndGameInput()
 }
 
 function handleIncorrect() {
   if ( points > 0 ) return newSong();
+
+  resetTimerInterval()
   updatePointsBox();
   handleGameOver();
   updateBodyBackground( points )
@@ -144,10 +185,10 @@ function updatePointsBox() {
   addPointsClassToAlert( points )
 
   if ( points !== 0 ) {
-    pointsElement.innerHTML = `For ${points} point${points === 1 ? "" : "s"}...`
+    pointsTextElement.innerHTML = `For ${points} point${points === 1 ? "" : "s"}...`
   }
   else {
-    pointsElement.innerHTML = game_over_text;
+    pointsTextElement.innerHTML = game_over_text;
   }
   
 }
@@ -167,14 +208,17 @@ function displayModal( guess, year ) {
   let gap = year - guess;
   let modal = document.getElementById("modal");
   let modalText = document.getElementById("modal-text");
+
   if (gap < 0) {
     gap = gap * -1;
   }
   if (gap < 3) {
     modalText.innerHTML = "So close! 🔥";
-  } else if (gap < 10) {
+  } 
+  else if (gap < 10) {
     modalText.innerHTML = "Not bad! 🤷‍♂️";
-  } else {
+  } 
+  else {
     modalText.innerHTML = "Way off! ❄️";
   }
 
@@ -212,7 +256,6 @@ function showInGameInput() {
 }
 
 function startGame() {
-  points   = MAX_ATTEMPTS
   showInGameInput()
   setDisableAllElements( false )
   updatePointsBox()
@@ -222,6 +265,29 @@ function startGame() {
 function addPointsClassToAlert( points ) {
   const className = `points-${points}` 
   pointsElement.className = `alert ${className}`
+}
+
+function pointsGradient() {
+    const color = `var( --${colorFromPoints()}-bg )`
+    return `linear-gradient( 90deg, ${color} 0%, ${color} ${timerPercent}%, transparent ${timerPercent}%, transparent 100% );`
+}
+
+function colorFromPoints() {
+  switch ( points ) {
+    case 5:
+      return "blue"
+    case 4:
+      return "green"
+    case 3:
+      return "yellow"
+    case 2:
+      return "orange"
+    case 1:
+    case 0:
+      return "red"
+  }
+
+  return "blue"
 }
 
 guessButton.addEventListener( "click", handleGuess )
@@ -234,6 +300,12 @@ guessInput.addEventListener( "keydown", e => {
 } )
 
 newGameButton.addEventListener( "click", nextRound )
+
+guessInput.addEventListener( "input", e => {
+  e.target.value = e.target.value.replace( /[^0-9]/g, "" )
+} )
+
+nextSongButton.addEventListener( "click", handleIncorrect );
 
 // entrypoint
 nextRound() 
