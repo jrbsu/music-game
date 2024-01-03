@@ -49,6 +49,7 @@ async function fetchTracks() {
 }
 
 async function nextRound() {
+  success = false
   await fetchTracks()
   points = MAX_ATTEMPTS
 
