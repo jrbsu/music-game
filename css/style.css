@@ -71,8 +71,34 @@ input, button {
   color: var(--white);
 }
 
-.inputContainer {
+#guess {
   width: 100%;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.inputContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.inputYearContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  outline: 1px solid var(--white);
+  margin-bottom: 1rem;
+}
+
+.inputCentury {
+  font-size: 40px;
+  text-align: right;
+}
+
+.inputNumber {
+  text-align: left;
 }
 
 .inputWrapper {
@@ -106,18 +132,6 @@ input, button {
 .inputButton:hover {
   background-color: var(--white);
   color: var(--black-bg);
-}
-
-.inputNumber {
-  border-radius: 0.5rem;
-  font-size: 40px;
-  font-weight: 900;
-  display: inline;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  width: 50%;
-  outline: 1px solid var(--white);
-  margin-bottom: 1rem;
 }
 
 #songs {
@@ -157,12 +171,53 @@ input, button {
   margin-bottom: 10px;
 }
 
+.setup {
+  border: 1px solid #555;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  background: var(--gradient);
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}
+
+.setup p {
+  font-size: 20px;
+  margin: 0 0 0.5em;
+}
+
+#decades {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.decadeButton {
+  background-color: var(--green-body-bg);
+  font-size: 20px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  outline: 1px solid var(--white);
+  margin: 0.2em;
+}
+
+.decadeButton.selected {
+  background-color: var(--green-bg);
+  color: var(--black-bg);
+}
+
+.decadeButton:hover {
+  background-color: var(--white);
+  color: var(--black-bg);
+}
+
 #points {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto;
+  margin: 0 auto 1.5em;
 }
 
 #pointsText {
@@ -363,56 +418,56 @@ body {
 
 .bodyBackgroundWrapper > img:nth-of-type(1) {
   animation-delay: 800ms;
-  rotate: 309deg;
-  left: 22%;
+  rotate: 427deg;
+  left: 36%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(2) {
   animation-delay: 1600ms;
   rotate: -240deg;
-  left: 95%;
+  left: 45%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(3) {
   animation-delay: 2400ms;
   rotate: 120deg;
-  left: 35%;
+  left: 58%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(4) {
   animation-delay: 3200ms;
   rotate: 540deg;
-  left: 21%;
+  left: 73%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(5) {
   animation-delay: 4000ms;
   rotate: -240deg;
-  left: 59%;
+  left: 67%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(6) {
   animation-delay: 4800ms;
   rotate: 120deg;
-  left: 59%;
+  left: 48%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(7) {
   animation-delay: 5600ms;
   rotate: 540deg;
-  left: 48%;
+  left: 88%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(8) {
   animation-delay: 6400ms;
   rotate: -240deg;
-  left: 76%;
+  left: 51%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(9) {
   animation-delay: 7200ms;
   rotate: 120deg;
-  left: 33%;
+  left: 11%;
 }
 
 .bodyBackgroundWrapper img {

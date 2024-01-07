@@ -7,6 +7,7 @@ let success        = false
 
 let all_songs = []
 let songs     = []
+let years     = []
 
 let timerInterval = null
 let timerPercent  = 100
@@ -21,14 +22,16 @@ const guessButton        = document.getElementById( "guessButton" )
 const giveUpButton       = document.getElementById( "giveUpButton" )
 const nextSongButton     = document.getElementById( "nextSongButton" )
 const newGameButton      = document.getElementById( "newGameButton" )
+const decadeButtons      = Array.from(document.querySelectorAll( ".decadeButton" ))
+const setupItems         = document.getElementById( "setup" )
 const songItems          = document.getElementById( "songs" )
 
 const endGameInput   = document.getElementById( "endGameInput" )
 const inGameInput    = document.getElementById( "inGameInput" )
 
 function randomYear() {
-  let random = Math.floor(Math.random() * (MAX_YEAR - MIN_YEAR) + MIN_YEAR)
-  return random
+  let random = Math.floor(Math.random() * years.length);
+  return years[random]
 }
 
 function shuffleArray(array) {
@@ -51,7 +54,11 @@ async function fetchTracks() {
 async function nextRound() {
   success = false
   await fetchTracks()
-  points = MAX_ATTEMPTS
+  points = MAX_ATTEMPTS;
+
+  if (years.length == 0) {
+    addYears(true)
+  }
 
   resetTimerInterval()
   thisYear = randomYear();
@@ -73,6 +80,7 @@ async function nextRound() {
   console.log( {correctYear: thisYear})
   updatePointsBox()
   startGame()
+  guessInput.focus()
 }
 
 function newSong() {
@@ -187,8 +195,7 @@ function updatePointsBox() {
 
   if ( points !== 0 ) {
     pointsTextElement.innerHTML = `For ${points} point${points === 1 ? "" : "s"}...`
-  }
-  else {
+  } else {
     pointsTextElement.innerHTML = game_over_text;
   }
   
@@ -196,6 +203,15 @@ function updatePointsBox() {
 
 function updateBodyBackground() {
   document.body.className = `body-${points}`
+}
+
+function constructGuess( guess ) {
+  let century = document.getElementById("century").innerHTML;
+  let guessYear = parseInt("" + century + guess);
+  if (guessYear.toString().length == 3) {
+    guessYear = parseInt("" + century + 0 + guess);
+  }
+  return guessYear
 }
 
 function wasGuessValid( guess ) {
@@ -215,11 +231,9 @@ function displayModal( guess, year ) {
   }
   if (gap < 3) {
     modalText.innerHTML = "So close! 🔥";
-  } 
-  else if (gap < 10) {
+  } else if (gap < 10) {
     modalText.innerHTML = "Not bad! 🤷‍♂️";
-  } 
-  else {
+  } else {
     modalText.innerHTML = "Way off! ❄️";
   }
 
@@ -230,21 +244,21 @@ function displayModal( guess, year ) {
 function handleGuess() {
   if ( guessButton.disabled ) return
 
-  const guess = +document.getElementById("guess").value
+  let guess = +document.getElementById("guess").value
   guessInput.focus()
+
+  guess = constructGuess(guess);
   
   if ( !wasGuessValid( guess ) ) return
 
   if ( guess === thisYear ) {
     handleSuccess();
-  }
-  else {
+  } else {
     displayModal(guess, thisYear);
     handleIncorrect();
   }
 
   guessInput.value = ""
-
 }
 
 function showEndGameInput() {
@@ -252,8 +266,10 @@ function showEndGameInput() {
   inGameInput.classList.add( "hidden" )
 }
 function showInGameInput() {
+  songItems.classList.remove( "hidden" )
   inGameInput.classList.remove( "hidden" )
   endGameInput.classList.add( "hidden" )
+  setupItems.classList.add( "hidden" )
 }
 
 function startGame() {
@@ -304,9 +320,65 @@ newGameButton.addEventListener( "click", nextRound )
 
 guessInput.addEventListener( "input", e => {
   e.target.value = e.target.value.replace( /[^0-9]/g, "" )
+  detectCentury(e.target.value)
 } )
 
 nextSongButton.addEventListener( "click", handleIncorrect );
 
-// entrypoint
-nextRound() 
+decadeButtons.map(button => button.addEventListener( "click", decadePicker ))
+
+function decadePicker(e) {
+  e.target.classList.toggle("selected");
+  addYears(false)
+}
+
+function genYears(decade) {
+  if (decade == 20) {
+    return [2020, 2021, 2022, 2023]
+  } else if (decade == 50) {
+    return [1953, 1954, 1955, 1956, 1957, 1958, 1959]
+  }
+  let yearsArray = [];
+  if (decade == 0 || decade == 10) {
+    for (var i=0;i<10;i++) {
+      decade = "" + decade;
+      let number = "" + 20 + decade[0] + i;
+      yearsArray.push(parseInt(number))
+    }
+    return yearsArray;
+  } else {
+    for (var i=0;i<10;i++) {
+      decade = "" + decade;
+      let number = "" + 19 + decade[0] + i;
+      yearsArray.push(parseInt(number))
+    }
+    return yearsArray;
+  }
+}
+
+function addYears(addAll) {
+  years = [];
+  let prefixes = [0, 50, 60, 70, 80, 90, 10, 20];
+  if (addAll === true) {
+    prefixes.forEach(function(e) {
+      years.push(...genYears(e))
+    });
+  } else {
+    decadeButtons.forEach(function(e) {
+      let yearPrefix = parseInt(e.innerHTML.replace("s",""));
+      let classes = Array.from(e.classList)
+      if (classes.includes("selected")) {
+        years.push(...genYears(yearPrefix))
+      }
+    });
+  }
+}
+
+function detectCentury(guess) {
+  let guessString = guess.toString();
+  if (parseInt(guessString[0]) < 3) {
+    document.getElementById("century").innerHTML = "20";
+  } else {
+    document.getElementById("century").innerHTML = "19";
+  }
+}

@@ -19,27 +19,30 @@
 
   <hr>
 
-  <div id="endGameInput" class="hidden">
+  <div id="endGameInput">
     <button id="newGameButton" class="inputButton">New Game</button>
   </div>
 
-  <div id="inGameInput" class="inputContainer">
-    <input 
-      class="inputNumber"
-      type="text"
-      id="guess"
-      maxlength="4"
-      min="1953"
-      max="2023"
-      autocomplete="off"
-      placeholder="Year..."
-    />
+  <div id="inGameInput" class="inputContainer hidden">
+    <div class="inputYearContainer">
+      <div class="inputCentury">
+        <p id="century">19</p>
+      </div>
+      <div class="inputNumber">
+        <input 
+          type="text"
+          id="guess"
+          maxlength="2"
+          autocomplete="off"
+          placeholder="..."
+        />
+      </div>
+    </div>
     <span class="buttons">
       <button class="inputButton" id="guessButton">Guess</button>
       <button class="inputButton" id="nextSongButton">Skip</button>
-      <button class="inputButton" id="giveUpButton">Give&nbsp;Up</button>
+      <button class="inputButton" id="giveUpButton">Give&nbsp;up</button>
     </span>
-
   </div>
 
   <hr>
@@ -48,16 +51,34 @@
       <p id="modal-text"></p>
     </div>
   </div>
-  <div id="points" class="alert points-5"><p id="pointsText"></p></div>
-  
-  <br>
+  <div id="points" class="alert points-5 hidden"><p id="pointsText"></p></div>
 
-  <ul id="songs">
+  <ul id="songs" class="hidden">
     <div class="song song-5">
       <div class="title"></div>
       <div class="artist"></div>
     </div>
   </ul>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <div id="setup" class="setup">
+    <p>Decades to include</p>
+    <div id="decades">
+      <button class="decadeButton selected" id="decade-50s">50s</button>
+      <button class="decadeButton selected" id="decade-60s">60s</button>
+      <button class="decadeButton selected" id="decade-70s">70s</button>
+      <button class="decadeButton selected" id="decade-80s">80s</button>
+      <button class="decadeButton selected" id="decade-90s">90s</button>
+      <button class="decadeButton selected" id="decade-00s">00s</button>
+      <button class="decadeButton selected" id="decade-10s">10s</button>
+      <button class="decadeButton selected" id="decade-20s">20s</button>
+    </div>
+  </div>
 
   <div id="youtube"></div>
   <script src="script.js"></script>

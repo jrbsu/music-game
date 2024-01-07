@@ -75,8 +75,34 @@ input, button {
     color: var(--white);
 }
 
-.inputContainer {
+#guess {
     width: 100%;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.inputContainer {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.inputYearContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    outline: 1px solid var(--white);
+    margin-bottom: 1rem;
+}
+
+.inputCentury {
+    font-size: 40px;
+    text-align: right;
+}
+
+.inputNumber {
+    text-align: left;
 }
 
 .inputWrapper {
@@ -108,18 +134,6 @@ input, button {
 .inputButton:hover {
     background-color: var(--white);
     color: var(--black-bg);
-}
-
-.inputNumber {
-    border-radius: 0.5rem;
-    font-size: 40px;
-    font-weight: 900;
-    display: inline;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    width: 50%;
-    outline: 1px solid var(--white);
-    margin-bottom: 1rem;
 }
 
 #songs {
@@ -161,12 +175,50 @@ input, button {
     margin-bottom: 10px;
 }
 
+.setup {
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    background: var(--gradient);
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+
+.setup p {
+    font-size: 20px;
+    margin: 0 0 0.5em;
+}
+
+#decades {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.decadeButton {
+    background-color: var(--green-body-bg);
+    font-size: 20px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    outline: 1px solid var(--white);
+    margin: 0.2em;
+}
+.decadeButton.selected {
+    background-color: var(--green-bg);
+    color: var(--black-bg);
+}
+.decadeButton:hover {
+    background-color: var(--white);
+    color: var(--black-bg);
+}
+
 #points {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 0 auto;
+    margin: 0 auto 1.5em;
 }
 
 #pointsText {
