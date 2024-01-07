@@ -509,3 +509,56 @@ body {
         opacity: 0;
     }
 }
+
+#total-points {
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    outline: 1px solid var(--white);
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 25vw;
+    width: 50%;
+    padding: 1em;
+}
+
+#total-points-number {
+    font-weight: 900;
+}
+
+.result-success {
+    --angle: 0deg;
+	outline: 1rem solid var(--green-bg);
+    animation: outline-size 1s ease-in-out alternate infinite;
+}
+
+.result-success-number {
+    color: var(--green-bg);
+}
+
+@keyframes outline-size {
+    0% {
+        outline: 0 solid var(--green-bg);
+    }
+    50% {
+        outline: 0.5rem solid var(--green-bg);
+    }
+    100% {
+        outline: 0 solid var(--green-bg);
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.result-fail {
+    outline: 5px solid rgb(var(--red-col))!important;
+}
+
+.result-fail-number {
+    color: rgb(var(--red-col));
+}

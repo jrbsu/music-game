@@ -25,6 +25,7 @@ const newGameButton      = document.getElementById( "newGameButton" )
 const decadeButtons      = Array.from(document.querySelectorAll( ".decadeButton" ))
 const setupItems         = document.getElementById( "setup" )
 const songItems          = document.getElementById( "songs" )
+const totalElement       = document.getElementById("total-points")
 
 const endGameInput   = document.getElementById( "endGameInput" )
 const inGameInput    = document.getElementById( "inGameInput" )
@@ -157,6 +158,7 @@ function handleGameOver() {
   total = 0;
   removeSongItemClasses()
   setDisableAllElements( true )
+  updateTotal(false)
   showEndGameInput()
 }
 
@@ -168,6 +170,7 @@ function handleSuccess() {
   document.getElementById("points").classList.add("rainbowGradient");
   total += points;
   pointsTextElement.innerHTML = `${thisYear} is right! You win ${points} point${points === 1 ? "" : "s"}!!<br />Now you have ${total} point${total === 1 ? "" : "s"}.`
+  updateTotal(true)
   setDisableAllElements( true )
   showEndGameInput()
 }
@@ -380,5 +383,26 @@ function detectCentury(guess) {
     document.getElementById("century").innerHTML = "20";
   } else {
     document.getElementById("century").innerHTML = "19";
+  }
+}
+
+function updateTotal(win) {
+  const pointsNumber = document.getElementById("total-points-number");
+  pointsNumber.innerHTML = total;
+  console.log(win)
+  if (win === true) {
+    totalElement.classList.add("result-success");
+    pointsNumber.classList.add("result-success-number");
+    setTimeout( () => {
+      totalElement.classList.remove("result-success");
+      pointsNumber.classList.remove("result-success-number");
+    }, 1000)
+  } else {
+    totalElement.classList.add("result-fail");
+    pointsNumber.classList.add("result-fail-number");
+    setTimeout( () => {
+      totalElement.classList.remove("result-fail");
+      pointsNumber.classList.remove("result-fail-number");
+    }, 1000)
   }
 }

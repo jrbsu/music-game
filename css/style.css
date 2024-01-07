@@ -418,56 +418,56 @@ body {
 
 .bodyBackgroundWrapper > img:nth-of-type(1) {
   animation-delay: 800ms;
-  rotate: 427deg;
-  left: 36%;
+  rotate: 227deg;
+  left: 23%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(2) {
   animation-delay: 1600ms;
   rotate: -240deg;
-  left: 45%;
+  left: 81%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(3) {
   animation-delay: 2400ms;
   rotate: 120deg;
-  left: 58%;
+  left: 57%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(4) {
   animation-delay: 3200ms;
   rotate: 540deg;
-  left: 73%;
+  left: 43%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(5) {
   animation-delay: 4000ms;
   rotate: -240deg;
-  left: 67%;
+  left: 49%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(6) {
   animation-delay: 4800ms;
   rotate: 120deg;
-  left: 48%;
+  left: 93%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(7) {
   animation-delay: 5600ms;
   rotate: 540deg;
-  left: 88%;
+  left: 1%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(8) {
   animation-delay: 6400ms;
   rotate: -240deg;
-  left: 51%;
+  left: 78%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(9) {
   animation-delay: 7200ms;
   rotate: 120deg;
-  left: 11%;
+  left: 19%;
 }
 
 .bodyBackgroundWrapper img {
@@ -506,4 +506,54 @@ body {
   100% {
     opacity: 0;
   }
+}
+#total-points {
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  outline: 1px solid var(--white);
+  margin-bottom: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 25vw;
+  width: 50%;
+  padding: 1em;
+}
+
+#total-points-number {
+  font-weight: 900;
+}
+
+.result-success {
+  --angle: 0deg;
+  outline: 1rem solid var(--green-bg);
+  animation: outline-size 1s ease-in-out alternate infinite;
+}
+
+.result-success-number {
+  color: var(--green-bg);
+}
+
+@keyframes outline-size {
+  0% {
+    outline: 0 solid var(--green-bg);
+  }
+  50% {
+    outline: 0.5rem solid var(--green-bg);
+  }
+  100% {
+    outline: 0 solid var(--green-bg);
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.result-fail {
+  outline: 5px solid rgb(var(--red-col)) !important;
+}
+
+.result-fail-number {
+  color: rgb(var(--red-col));
 }/*# sourceMappingURL=style.css.map */
