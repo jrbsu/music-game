@@ -39,7 +39,6 @@ body {
   color: var(--white);
   position: relative;
   height: 100vh;
-  padding-top: 20px;
   background-size: 100% 200%;
   animation: flowGradient 10s linear infinite;
 }
@@ -366,7 +365,8 @@ body {
   .inputNumber,
   .buttons,
   .alert,
-  .song {
+  .song,
+  .setup {
     width: 80%;
   }
 }
@@ -418,8 +418,8 @@ body {
 
 .bodyBackgroundWrapper > img:nth-of-type(1) {
   animation-delay: 800ms;
-  rotate: 227deg;
-  left: 23%;
+  rotate: 255deg;
+  left: 16%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(2) {
@@ -431,43 +431,43 @@ body {
 .bodyBackgroundWrapper > img:nth-of-type(3) {
   animation-delay: 2400ms;
   rotate: 120deg;
-  left: 57%;
+  left: 89%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(4) {
   animation-delay: 3200ms;
   rotate: 540deg;
-  left: 43%;
+  left: 54%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(5) {
   animation-delay: 4000ms;
   rotate: -240deg;
-  left: 49%;
+  left: 88%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(6) {
   animation-delay: 4800ms;
   rotate: 120deg;
-  left: 93%;
+  left: 67%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(7) {
   animation-delay: 5600ms;
   rotate: 540deg;
-  left: 1%;
+  left: 67%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(8) {
   animation-delay: 6400ms;
   rotate: -240deg;
-  left: 78%;
+  left: 3%;
 }
 
 .bodyBackgroundWrapper > img:nth-of-type(9) {
   animation-delay: 7200ms;
   rotate: 120deg;
-  left: 19%;
+  left: 28%;
 }
 
 .bodyBackgroundWrapper img {
@@ -508,6 +508,7 @@ body {
   }
 }
 #total-points {
+  background: var(--gradient);
   border-radius: 0.5rem;
   text-align: center;
   margin-bottom: 0.5rem;
@@ -544,11 +545,6 @@ body {
   100% {
     outline: 0 solid var(--green-bg);
   }
-}
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
 }
 .result-fail {
   outline: 5px solid rgb(var(--red-col)) !important;

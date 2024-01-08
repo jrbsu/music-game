@@ -43,7 +43,6 @@ body {
     color: var(--white);
     position: relative;
     height: 100vh;
-    padding-top: 20px;
     background-size: 100% 200%;
     animation: flowGradient 10s linear infinite;
 }
@@ -370,7 +369,8 @@ body {
     .inputNumber,
     .buttons,
     .alert,
-    .song {
+    .song,
+    .setup {
         width: 80%;
     }
 }
@@ -511,6 +511,7 @@ body {
 }
 
 #total-points {
+    background: var(--gradient);
     border-radius: 0.5rem;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -547,12 +548,6 @@ body {
     100% {
         outline: 0 solid var(--green-bg);
     }
-}
-
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
 }
 
 .result-fail {
