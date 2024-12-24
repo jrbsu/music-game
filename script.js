@@ -13,7 +13,7 @@ let timerInterval = null
 let timerPercent  = 100
 
 const MIN_YEAR = 1953
-const MAX_YEAR = 2023
+const MAX_YEAR = 2024
 
 const pointsElement      = document.getElementById( "points" )
 const pointsTextElement  = document.getElementById( "pointsText" )
@@ -337,7 +337,7 @@ function decadePicker(e) {
 
 function genYears(decade) {
   if (decade == 20) {
-    return [2020, 2021, 2022, 2023]
+    return [2020, 2021, 2022, 2023, 2024]
   } else if (decade == 50) {
     return [1953, 1954, 1955, 1956, 1957, 1958, 1959]
   }
